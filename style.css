@@ -1,0 +1,20 @@
+body {
+    padding-top: 80px;
+    background-color: #f8f9fa;
+}
+
+.dark-mode {
+    background-color: #343a40;
+    color: white;
+}
+
+.sticky-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+footer {
+    background-color: #212529;
+}

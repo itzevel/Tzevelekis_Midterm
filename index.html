@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche Evolution - Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header class="sticky-header bg-dark text-white p-3">
+        <div class="container">
+            <h1 class="float-left">The Evolution of Porsche</h1>
+            <nav class="float-right">
+                <a href="index.html" class="text-white mx-2">Home</a>
+                <a href="tasks.html" class="text-white mx-2">Models</a>
+                <a href="about.html" class="text-white mx-2">About</a>
+                <a href="contact.html" class="text-white mx-2">Contact</a>
+                <button id="dark-mode-toggle" class="btn btn-light btn-sm">Dark Mode</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        <section class="welcome">
+            <h2>Welcome to the Evolution of Porsche</h2>
+            <p>Explore the iconic Porsche models through the years, from their humble beginnings to their place as a symbol of innovation and luxury.</p>
+            <a href="tasks.html" class="btn btn-primary">View Models</a>
+        </section>
+
+        <section class="latest-activity mt-5">
+            <h3>Latest Models Added</h3>
+            <ul id="latest-activity-list">
+                <!-- Latest activity (recently added Porsche models) will appear here via jQuery -->
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>© 2024 Porsche Evolution | Follow us: 
+            <a href="#" class="text-white">Twitter</a> | 
+            <a href="#" class="text-white">Instagram</a>
+        </p>
+    </footer>
+
+    <script>
+        // Function to toggle dark mode and store preference in localStorage
+        function toggleDarkMode() {
+            $("body").toggleClass("dark-mode");
+            if ($("body").hasClass("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+            }
+        }
+
+        // Apply the dark mode based on localStorage on page load
+        $(document).ready(function() {
+            if (localStorage.getItem("darkMode") === "enabled") {
+                $("body").addClass("dark-mode");
+            }
+
+            // Toggle button functionality
+            $("#dark-mode-toggle").on("click", toggleDarkMode);
+        });
+    </script>
+</body>
+</html>
