@@ -9,53 +9,62 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <header class="sticky-header bg-dark text-white p-3">
-        <div class="container">
-            <h1 class="float-left">Porsche Evolution</h1>
-            <nav class="float-right">
-                <a href="index.html" class="text-white mx-2">Home</a>
-                <a href="tasks.html" class="text-white mx-2">Models</a>
-                <a href="about.html" class="text-white mx-2">About</a>
-                <a href="contact.html" class="text-white mx-2">Contact</a>
-                <button id="dark-mode-toggle" class="btn btn-light btn-sm">Dark Mode</button>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container mt-5">
-        <section class="about">
-            <h2>About Porsche Evolution</h2>
-            <p>Porsche is a luxury and sports car manufacturer with a rich history, producing some of the most iconic models in automotive history. The brand stands for innovation, performance, and timeless design.</p>
-        </section>
-
-        <section class="team mt-5">
-            <h3>Meet Our Team</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="team1.jpg" class="card-img-top" alt="Team Member 1">
-                        <div class="card-body">
-                            <h5 class="card-title">John Doe</h5>
-                            <p class="card-text">Lead Developer & Porsche Enthusiast</p>
-                        </div>
+    <div class="wrapper d-flex flex-column min-vh-100">
+        <header class="sticky-header bg-dark text-white p-3">
+            <div class="container">
+                <h1 class="float-left">Porsche Evolution</h1>
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="tasks.html">Models</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="reflections.html">Reflections</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                        <button id="dark-mode-toggle" class="btn btn-light btn-sm ml-2">Dark Mode</button>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="team2.jpg" class="card-img-top" alt="Team Member 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Jane Smith</h5>
-                            <p class="card-text">Designer & Car Historian</p>
-                        </div>
-                    </div>
-                </div>
+                </nav>
             </div>
-        </section>
-    </main>
+        </header>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>© 2024 Porsche Evolution | Stay connected!</p>
-    </footer>
+        <main class="container mt-5 flex-grow-1">
+            <section class="about">
+                <h2>About Porsche Evolution</h2>
+                <p>Porsche is a luxury and sports car manufacturer with a rich history, producing some of the most iconic models in automotive history. The brand stands for innovation, performance, and timeless design.</p>
+            </section>
+
+            <!-- Updated Meet the Developer Section -->
+            <section class="team mt-5">
+                <h3>Meet the Developer</h3>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Ioannis Tzevelekis</h5>
+                        <p class="card-text">267054</p>
+                        <p class="card-text">Information Technology Major</p>
+                        <p class="card-text">The American College of Greece</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-dark text-white text-center py-3 mt-5">
+            <p>© 2024 Porsche Evolution | Stay connected!</p>
+        </footer>
+    </div>
 
     <script>
         // Function to toggle dark mode and store preference in localStorage

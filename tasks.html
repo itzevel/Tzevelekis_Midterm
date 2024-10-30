@@ -12,12 +12,30 @@
     <header class="sticky-header bg-dark text-white p-3">
         <div class="container">
             <h1 class="float-left">Porsche Evolution</h1>
-            <nav class="float-right">
-                <a href="index.html" class="text-white mx-2">Home</a>
-                <a href="tasks.html" class="text-white mx-2">Models</a>
-                <a href="about.html" class="text-white mx-2">About</a>
-                <a href="contact.html" class="text-white mx-2">Contact</a>
-                <button id="dark-mode-toggle" class="btn btn-light btn-sm">Dark Mode</button>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tasks.html">Models</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reflections.html">Reflections</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    <button id="dark-mode-toggle" class="btn btn-light btn-sm ml-2">Dark Mode</button>
+                </div>
             </nav>
         </div>
     </header>
@@ -55,18 +73,88 @@
                     </tr>
                 </thead>
                 <tbody id="model-list">
-                    <!-- Porsche models will be dynamically added here -->
+                    <!-- Hardcoded Porsche models -->
+                    <tr>
+                        <td>Porsche 911 Carrera</td>
+                        <td>A high-performance sports car with a classic design.</td>
+                        <td>1964</td>
+                        <td>Completed</td>
+                        <td>
+                            <button class="btn btn-success complete-btn" data-index="0">Mark as Completed</button>
+                            <button class="btn btn-danger delete-btn" data-index="0">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Porsche 911 Turbo</td>
+                        <td>A powerful variant of the 911 with turbocharged performance.</td>
+                        <td>1975</td>
+                        <td>Completed</td>
+                        <td>
+                            <button class="btn btn-success complete-btn" data-index="1">Mark as Completed</button>
+                            <button class="btn btn-danger delete-btn" data-index="1">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Porsche Boxster</td>
+                        <td>A mid-engine roadster with agile handling and a fun drive.</td>
+                        <td>1996</td>
+                        <td>Completed</td>
+                        <td>
+                            <button class="btn btn-success complete-btn" data-index="2">Mark as Completed</button>
+                            <button class="btn btn-danger delete-btn" data-index="2">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Porsche Cayman</td>
+                        <td>A coupe version of the Boxster with similar dynamics.</td>
+                        <td>2006</td>
+                        <td>Completed</td>
+                        <td>
+                            <button class="btn btn-success complete-btn" data-index="3">Mark as Completed</button>
+                            <button class="btn btn-danger delete-btn" data-index="3">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Porsche Panamera</td>
+                        <td>A luxury sedan with sports car performance.</td>
+                        <td>2009</td>
+                        <td>Completed</td>
+                        <td>
+                            <button class="btn btn-success complete-btn" data-index="4">Mark as Completed</button>
+                            <button class="btn btn-danger delete-btn" data-index="4">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Porsche Macan</td>
+                        <td>A compact SUV with sporty characteristics.</td>
+                        <td>2014</td>
+                        <td>Completed</td>
+                        <td>
+                            <button class="btn btn-success complete-btn" data-index="5">Mark as Completed</button>
+                            <button class="btn btn-danger delete-btn" data-index="5">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Porsche Taycan</td>
+                        <td>A fully electric sports car that redefines performance.</td>
+                        <td>2020</td>
+                        <td>Completed</td>
+                        <td>
+                            <button class="btn btn-success complete-btn" data-index="6">Mark as Completed</button>
+                            <button class="btn btn-danger delete-btn" data-index="6">Delete</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </section>
     </main>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
         <p>© 2024 Porsche Evolution | Stay connected!</p>
     </footer>
 
     <script>
-        // Dark mode functionality - reused across all pages
+        // Function to toggle dark mode and store preference in localStorage
         function toggleDarkMode() {
             $("body").toggleClass("dark-mode");
             if ($("body").hasClass("dark-mode")) {
@@ -84,62 +172,50 @@
 
             // Toggle button functionality
             $("#dark-mode-toggle").on("click", toggleDarkMode);
-        });
 
-        // Array to store the models
-        let models = [];
+            // Handle form submission
+            $("#task-form").on("submit", function(event) {
+                event.preventDefault();
+                const modelName = $("#model-name").val();
+                const modelDescription = $("#model-description").val();
+                const releaseYear = $("#release-date").val();
 
-        // Function to render the models in the table
-        function renderModels() {
-            $('#model-list').html('');
-            models.forEach(function(model, index) {
-                $('#model-list').append(`
+                // Add new model to the table
+                $("#model-list").append(`
                     <tr>
-                        <td>${model.name}</td>
-                        <td>${model.description}</td>
-                        <td>${model.year}</td>
-                        <td>${model.completed ? 'Completed' : 'Pending'}</td>
+                        <td>${modelName}</td>
+                        <td>${modelDescription}</td>
+                        <td>${releaseYear}</td>
+                        <td>In Progress</td>
                         <td>
-                            <button class="btn btn-success complete-btn" data-index="${index}">Mark as Completed</button>
-                            <button class="btn btn-danger delete-btn" data-index="${index}">Delete</button>
+                            <button class="btn btn-success complete-btn">Mark as Completed</button>
+                            <button class="btn btn-danger delete-btn">Delete</button>
                         </td>
                     </tr>
                 `);
+
+                // Save the model in localStorage
+                let latestModels = JSON.parse(localStorage.getItem("latestModels")) || [];
+                latestModels.push({ name: modelName, description: modelDescription, releaseYear: releaseYear });
+                localStorage.setItem("latestModels", JSON.stringify(latestModels));
+
+                // Clear form inputs
+                $("#model-name").val('');
+                $("#model-description").val('');
+                $("#release-date").val('');
             });
-        }
 
-        // Add new model form submission
-        $('#task-form').submit(function(e) {
-            e.preventDefault();
+            // Delete functionality
+            $(document).on("click", ".delete-btn", function() {
+                $(this).closest("tr").remove();
+            });
 
-            const name = $('#model-name').val();
-            const description = $('#model-description').val();
-            const year = $('#release-date').val();
-
-            const model = {
-                name: name,
-                description: description,
-                year: year,
-                completed: false
-            };
-
-            models.push(model);
-            renderModels();
-            this.reset();
-        });
-
-        // Handle mark as completed
-        $('#model-list').on('click', '.complete-btn', function() {
-            const index = $(this).data('index');
-            models[index].completed = true;
-            renderModels();
-        });
-
-        // Handle delete action
-        $('#model-list').on('click', '.delete-btn', function() {
-            const index = $(this).data('index');
-            models.splice(index, 1);
-            renderModels();
+            // Complete functionality
+            $(document).on("click", ".complete-btn", function() {
+                const row = $(this).closest("tr");
+                row.find("td:nth-child(4)").text("Completed");
+                $(this).prop("disabled", true);
+            });
         });
     </script>
 </body>
